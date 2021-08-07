@@ -3,10 +3,6 @@
     font-size: larger;
     color: indigo;
 }
-body {
-    overflow-y: hidden; /* Hide vertical scrollbar */
-    overflow-x: hidden; /* Hide horizontal scrollbar */
-}
 #textInput {
     padding-top: 10px;
     padding-right: 5px;
@@ -15,8 +11,7 @@ body {
 }
 #borderBox {
     border-color:blue; 
-    border: dashed; 
-    background: skyblue;
+    border: solid; 
     padding-left: inherit;
     padding-bottom: 5px;
 }
