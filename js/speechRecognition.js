@@ -2,7 +2,6 @@ if ("webkitSpeechRecognition" in window) {
     document.getElementById("stopListen").style.display = 'none';
 
     let final_transcript = "";
-    let interim_transcript = "";
 
     let speechRecognition = new webkitSpeechRecognition();
     speechRecognition.continuous = true;
@@ -16,12 +15,15 @@ if ("webkitSpeechRecognition" in window) {
     speechRecognition.onend = () => {
         document.getElementById("startListen").style.visibility = 'visible';
         document.getElementById("stopListen").style.display = 'none';
+        document.getElementById("textInput").value = " ";
+        document.getElementById("textInput").value = final_transcript;
     };
     speechRecognition.onError = () => {
         console.error("Error occurred while recognizing the speech. Please try again.")
     };
 
     speechRecognition.onresult = (event) => {
+        let interim_transcript = "";
         // Create the interim transcript string locally because we don't want it to persist like final transcript
         // Loop through the results from the speech recognition object.
         for (let i = event.resultIndex; i < event.results.length; ++i) {
@@ -32,9 +34,9 @@ if ("webkitSpeechRecognition" in window) {
                 interim_transcript += event.results[i][0].transcript;
             }
         }
-        document.getElementById("textInput").value = "";
+        // Set the Final transcript and Interim transcript.
         document.getElementById("textInput").value = final_transcript;
-    }
+    };
 
     document.getElementById("btnradio4").onclick = () => {
         speechRecognition.start();
