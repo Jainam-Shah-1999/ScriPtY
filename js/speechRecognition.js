@@ -15,7 +15,8 @@ if ("webkitSpeechRecognition" in window) {
     speechRecognition.onend = () => {
         document.getElementById("startListen").style.visibility = 'visible';
         document.getElementById("stopListen").style.display = 'none';
-        document.getElementById("textInput").value = " ";
+        document.getElementById("textInput").value = "processing final output...";
+        console.log(final_transcript);
         document.getElementById("textInput").value = final_transcript;
     };
     speechRecognition.onError = () => {
