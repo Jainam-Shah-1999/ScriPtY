@@ -32,6 +32,7 @@ if ("webkitSpeechRecognition" in window) {
                 interim_transcript += event.results[i][0].transcript;
             }
         }
+        document.getElementById("textInput").value = "";
         document.getElementById("textInput").value = final_transcript;
     }
 
